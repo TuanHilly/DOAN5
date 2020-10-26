@@ -22,5 +22,10 @@ export class HomeComponent extends BaseComponent implements OnInit {
       console.log(this.sp);
 });
   }
+  //cart (basecomponen)
+  addToCart(it) {
+    this._cart.addToCart(it);
+    alert('Thêm thành công!');
+  }
 
 }
