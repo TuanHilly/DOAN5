@@ -1,0 +1,12 @@
+E:\web Bags\apiTuanHilly1.1\DAL\bin\Debug\netcoreapp3.1\Model.dll
+E:\web Bags\apiTuanHilly1.1\DAL\obj\Debug\netcoreapp3.1\DAL.csprojAssemblyReference.cache
+E:\web Bags\apiTuanHilly1.1\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+E:\web Bags\apiTuanHilly1.1\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+E:\web Bags\apiTuanHilly1.1\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+E:\web Bags\apiTuanHilly1.1\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+E:\web Bags\apiTuanHilly1.1\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+E:\web Bags\apiTuanHilly1.1\DAL\bin\Debug\netcoreapp3.1\Model.pdb
+E:\web Bags\apiTuanHilly1.1\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
+E:\web Bags\apiTuanHilly1.1\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CopyComplete
+E:\web Bags\apiTuanHilly1.1\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+E:\web Bags\apiTuanHilly1.1\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
