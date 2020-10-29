@@ -2080,11 +2080,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\web Bags\\apiTuanHilly1.1\\API\\API.csproj",
+      "projectUniqueName": "E:\\DOAN5\\apiTuanHilly1.1\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "E:\\web Bags\\apiTuanHilly1.1\\API\\API.csproj",
+      "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\web Bags\\apiTuanHilly1.1\\API\\obj\\",
+      "outputPath": "E:\\DOAN5\\apiTuanHilly1.1\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2100,11 +2100,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\web Bags\\apiTuanHilly1.1\\BLL\\BLL.csproj": {
-              "projectPath": "E:\\web Bags\\apiTuanHilly1.1\\BLL\\BLL.csproj"
+            "E:\\DOAN5\\apiTuanHilly1.1\\BLL\\BLL.csproj": {
+              "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\BLL\\BLL.csproj"
             },
-            "E:\\web Bags\\apiTuanHilly1.1\\Model\\Model.csproj": {
-              "projectPath": "E:\\web Bags\\apiTuanHilly1.1\\Model\\Model.csproj"
+            "E:\\DOAN5\\apiTuanHilly1.1\\Model\\Model.csproj": {
+              "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\Model\\Model.csproj"
             }
           }
         }

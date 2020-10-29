@@ -41,3 +41,46 @@ E:\web Bags\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\staticwebassets\API.Stat
 E:\web Bags\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.dll
 E:\web Bags\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.pdb
 E:\web Bags\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\appsettings.json
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\API.exe
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\API.deps.json
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\API.runtimeconfig.json
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\API.runtimeconfig.dev.json
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\API.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\API.pdb
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\BLL.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\DAL.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Model.dll
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\BLL.pdb
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\Model.pdb
+E:\DOAN5\apiTuanHilly1.1\API\bin\Debug\netcoreapp3.1\DAL.pdb
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.csprojAssemblyReference.cache
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.AssemblyInfoInputs.cache
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.AssemblyInfo.cs
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.RazorTargetAssemblyInfo.cache
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.csproj.CopyComplete
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.Manifest.cache
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.xml
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.dll
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.pdb
+E:\DOAN5\apiTuanHilly1.1\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache

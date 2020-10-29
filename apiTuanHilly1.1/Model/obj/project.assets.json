@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\web Bags\\apiTuanHilly1.1\\Model\\Model.csproj",
+      "projectUniqueName": "E:\\DOAN5\\apiTuanHilly1.1\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "E:\\web Bags\\apiTuanHilly1.1\\Model\\Model.csproj",
+      "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\Model\\Model.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\web Bags\\apiTuanHilly1.1\\Model\\obj\\",
+      "outputPath": "E:\\DOAN5\\apiTuanHilly1.1\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -5,7 +5,7 @@ namespace Model
 {
     public class ProductModel
     {
-        public int ID { get; set; }
+        public int id { get; set; }
         public int Category_id { get; set; }
         public string Name { get; set; }
         public int Size { get; set; }

@@ -7,8 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 
 const routesconfig: Routes=[
-  { path:'', redirectTo:'home', pathMatch:'full' },
-  { path:'home', component: HomeComponent },
+  // { path:'', redirectTo:'home', pathMatch:'full' },
+  { path:'', component: HomeComponent },
 
 ];
 

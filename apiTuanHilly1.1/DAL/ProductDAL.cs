@@ -20,8 +20,8 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_item_create",
-                "@ID", model.ID,
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_create",
+                "@ID", model.id,
                 "@Category_id", model.Category_id,
                 "@Name", model.Name,
                 "@Size", model.Size,
@@ -48,8 +48,8 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_item_get_by_id",
-                     "@item_id", id);
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_by_id",
+                     "@ID", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<ProductModel>().FirstOrDefault();

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MhPWidZBQzXRBoec9D/E6J/ixGAPtUTcfBmZOA+XZvFPAhjAPOfMVAwlF1sSOVJVQrCFP1WFG2krYOapbNtHCQ==",
+  "dgSpecHash": "50XYlIGE3rlbOnty/EKYsx/5G8BLQ7sMvxfToem12MmHS9l3h4OYGIOsaj8oyDjVmAO97XdSeRl0tyOQMoTAnA==",
   "success": true,
-  "projectFilePath": "E:\\web Bags\\apiTuanHilly1.1\\DAL\\DAL.csproj",
+  "projectFilePath": "E:\\DOAN5\\apiTuanHilly1.1\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.9\\microsoft.extensions.configuration.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.9\\microsoft.extensions.primitives.3.1.9.nupkg.sha512",

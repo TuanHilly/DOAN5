@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lEWBto2FfGKigr26YDzab41VkUEpKnoF5bPKeXr0EdSHXFt/RoAjg/OeKVhnR4mtXN05pQJkEnzkbAhUMvD+gA==",
+  "dgSpecHash": "7ex+ZA7NsJyv5NimSo22iiefzT9CfgUI1qa+i0PyRaeXU+htWpzGoYHhwB2jZQMuzfT5TkJUKt8+L+CjIczIZg==",
   "success": true,
-  "projectFilePath": "E:\\web Bags\\apiTuanHilly1.1\\API\\API.csproj",
+  "projectFilePath": "E:\\DOAN5\\apiTuanHilly1.1\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.9\\microsoft.aspnetcore.authentication.jwtbearer.3.1.9.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

@@ -570,11 +570,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\web Bags\\apiTuanHilly1.1\\DAL\\DAL.csproj",
+      "projectUniqueName": "E:\\DOAN5\\apiTuanHilly1.1\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "E:\\web Bags\\apiTuanHilly1.1\\DAL\\DAL.csproj",
+      "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\web Bags\\apiTuanHilly1.1\\DAL\\obj\\",
+      "outputPath": "E:\\DOAN5\\apiTuanHilly1.1\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -590,8 +590,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\web Bags\\apiTuanHilly1.1\\Model\\Model.csproj": {
-              "projectPath": "E:\\web Bags\\apiTuanHilly1.1\\Model\\Model.csproj"
+            "E:\\DOAN5\\apiTuanHilly1.1\\Model\\Model.csproj": {
+              "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\Model\\Model.csproj"
             }
           }
         }

@@ -4,6 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductModule } from './pages/product/product.module';
 import { NotFoundComponent } from './Block/not-found/not-found.component';
 import { HomeModule } from './Pages/home/home.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routesConfig: Routes = [
@@ -18,6 +21,7 @@ const routesConfig: Routes = [
 @NgModule({
   declarations: [],
   imports:[
+
     CommonModule,
     ProductModule,
     HomeModule,
