@@ -16,10 +16,10 @@ export class HomeComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this._api.get('/api/Product/get-all').takeUntil(this.unsubscribe).subscribe(res => {this.sp = res;
-      setTimeout(() => {
+      // setTimeout(() => {
         this.loadScripts();
-      }, );
-      console.log(this.sp);
+      // }, );
+      //console.log(this.sp);
 });
   }
   //cart (basecomponen)

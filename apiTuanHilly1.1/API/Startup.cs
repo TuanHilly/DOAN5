@@ -71,6 +71,10 @@ namespace API
             services.AddTransient<ICustomerBLL, CustomerBLL>();
             services.AddTransient<IProductBLL, ProductBLL>();
             services.AddTransient<IProductDAL, ProductDAL>();
+
+            services.AddTransient<IBillBLL, BillBLL>();
+            services.AddTransient<IBillDAL, BillDAL>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

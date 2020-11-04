@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Model
 {
     public class BillModel
     {
-        public int ID { get; set; }
-        public string Payment { get; set; }
-        public string Total { get; set; }
-        public string Note { get; set; }
-        public string DateOrder { get; set; }
-        public int ID_product { get; set; }
-        public string Price { get; set; }
-        public int Quantity { get; set; }
 
+        public string id { get; set; }
+        public string name { get; set; }      
+        public float total { get; set; }
+        public string address { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
+        public DateTime? created_at { get; set; }
+        public List<BillDetailModel>listjson_chitiet { get; set; }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+
 
 namespace Model
 {
     public class ProductModel
     {
-        public int id { get; set; }
-        public int Category_id { get; set; }
+        public int product_id { get; set; }
+        public int category_id { get; set; }
         public string Name { get; set; }
         public int Size { get; set; }
         public int Quantity { get; set; }
