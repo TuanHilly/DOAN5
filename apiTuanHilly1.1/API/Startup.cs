@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL;
+using BLL.Interfaces;
 using DAL;
 using DAL.Helper;
+using DAL.Interfaces;
 using Helper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -74,6 +76,8 @@ namespace API
 
             services.AddTransient<IBillBLL, BillBLL>();
             services.AddTransient<IBillDAL, BillDAL>();
+            services.AddTransient<IUserDAL, UserDAL>();
+            services.AddTransient<IUserBLL, UserBLL>();
 
         }
 

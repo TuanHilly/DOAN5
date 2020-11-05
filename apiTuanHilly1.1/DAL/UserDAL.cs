@@ -1,10 +1,10 @@
 ﻿using DAL.Helper;
 using Model;
-using Helper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System;
+using DAL.Interfaces;
 
 namespace DAL
 {
@@ -16,21 +16,35 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
-        public bool Create(UserModel model)
+        public List<UserModel> GetDataAll()
+        {
+            string msgError = "";
+            try
+            {
+
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_user_all");
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<UserModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool CreateUser(UserModel model)
         {
             string msgError = "";
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_user_create",
-                "@ID", model.ID,
-                "@Name", model.Name,
-                "@Email", model.Email,
-                "@Phone", model.Phone,
-                "@Address", model.Address,
-                "@Role", model.Role,
-                "@Token", model.Token,
-                "@Password", model.Password,
-                "@Image_url", model.Image_url);
+                "@id", model.id,
+                "@hoten", model.hoten,
+                "@taikhoan", model.taikhoan,
+                "@matkhau", model.matkhau,
+                
+                "@role", model.role);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -49,7 +63,7 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_user_delete",
-                "@user_id", id);
+                "@id", id);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -67,16 +81,12 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_user_update",
-                "@ID", model.ID,
-                "@Name", model.Name,
-                "@Email", model.Email,
-                "@Phone", model.Phone,
-                "@Address", model.Address,
-                "@Role", model.Role,
-                "@Token", model.Token,
-                "@Password", model.Password,
-                "@Image_url", model.Image_url
-                );
+                "@id", model.id,
+                "@hoten", model.hoten,
+                "@taikhoan", model.taikhoan,
+                "@matkhau", model.matkhau,
+               
+                "@role", model.role);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -114,7 +124,7 @@ namespace DAL
             try
             {
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_user_get_by_id",
-                     "@user_id", id);
+                     "@id", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<UserModel>().FirstOrDefault();

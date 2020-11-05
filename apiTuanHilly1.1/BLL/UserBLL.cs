@@ -1,14 +1,13 @@
-﻿using DAL;
+﻿using BLL.Interfaces;
+using DAL.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Model;
 using System;
-using Helper;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.Extensions.Configuration;
 
 namespace BLL
 {
@@ -16,6 +15,11 @@ namespace BLL
     {
         private IUserDAL _res;
         private string Secret;
+
+        public List<UserModel> get()
+        {
+            return _res.GetDataAll();//nếu có xử lý thêm viết ở đây
+        }
         public UserBLL(IUserDAL res, IConfiguration configuration)
         {
             Secret = configuration["AppSettings:Secret"];
@@ -39,14 +43,14 @@ namespace BLL
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Name.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role)
+                    new Claim(ClaimTypes.Name, user.hoten.ToString()),
+                    new Claim(ClaimTypes.Role, user.role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
+            user.token = tokenHandler.WriteToken(token);
 
             return user;
 
@@ -56,9 +60,9 @@ namespace BLL
         {
             return _res.GetDatabyID(id);
         }
-        public bool Create(UserModel model)
+        public bool CreateUser(UserModel model)
         {
-            return _res.Create(model);
+            return _res.CreateUser(model);
         }
         public bool Update(UserModel model)
         {
@@ -66,7 +70,7 @@ namespace BLL
         }
         public List<UserModel> Search(int pageIndex, int pageSize, out long total, string hoten, string taikhoan)
         {
-            return _res.Search(pageIndex, pageSize, out total,hoten,taikhoan);
+            return _res.Search(pageIndex, pageSize, out total, hoten, taikhoan);
         }
     }
 

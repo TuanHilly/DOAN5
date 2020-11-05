@@ -8,10 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
 import {FileUploadModule} from 'primeng/fileupload';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { FileNotFoundComponent } from './file-not-found/file-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
-  declarations: [UnauthorizedComponent, FileNotFoundComponent],
+  declarations: [UnauthorizedComponent],
   imports: [
     FormsModule,
     PanelModule,

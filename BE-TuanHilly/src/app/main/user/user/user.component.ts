@@ -2,7 +2,7 @@ import { MustMatch } from '../../../helpers/must-match.validator';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { FileUpload } from 'primeng/fileupload';
 import { FormBuilder, Validators} from '@angular/forms';
-import { BaseComponent } from '../../../lib/base-component';
+import { BaseComponent } from '../../../lib/base.component';
 import 'rxjs/add/operator/takeUntil';
 declare var $: any;
 @Component({
@@ -38,7 +38,7 @@ export class UserComponent extends BaseComponent implements OnInit {
   }
 
   loadPage(page) { 
-    this._api.post('/api/users/search',{page: page, pageSize: this.pageSize}).takeUntil(this.unsubscribe).subscribe(res => {
+    this._api.post('/api/Users/search',{page: page, pageSize: this.pageSize}).takeUntil(this.unsubscribe).subscribe(res => {
       this.users = res.data;
       this.totalRecords =  res.totalItems;
       this.pageSize = res.pageSize;
@@ -48,16 +48,17 @@ export class UserComponent extends BaseComponent implements OnInit {
   search() { 
     this.page = 1;
     this.pageSize = 5;
-    this._api.post('/api/users/search',{page: this.page, pageSize: this.pageSize, hoten: this.formsearch.get('hoten').value, taikhoan: this.formsearch.get('taikhoan').value}).takeUntil(this.unsubscribe).subscribe(res => {
+    this._api.post('/api/Users/search',{page: this.page, pageSize: this.pageSize, hoten: this.formsearch.get('hoten').value, taikhoan: this.formsearch.get('taikhoan').value}).takeUntil(this.unsubscribe).subscribe(res => {
       this.users = res.data;
+      console.log(this.users);
       this.totalRecords =  res.totalItems;
       this.pageSize = res.pageSize;
       });
   }
 
   pwdCheckValidator(control){
-    var filteredStrings = {search:control.value, select:'@#!$%&*'}
-    var result = (filteredStrings.select.match(new RegExp('[' + filteredStrings.search + ']', 'g')) || []).join('');
+    var filteredStrings = {search:control.value}
+    var result = (new RegExp('[' + filteredStrings.search + ']', 'g') || []);
     if(control.value.length < 6 || !result){
         return {matkhau: true};
     }
@@ -70,53 +71,42 @@ export class UserComponent extends BaseComponent implements OnInit {
     if (this.formdata.invalid) {
       return;
     } 
+    console.log("click ok!");
+    console.log(this.isCreate);
     if(this.isCreate) { 
-      this.getEncodeFromImage(this.file_image).subscribe((data: any): void => {
-        let data_image = data == '' ? null : data;
         let tmp = {
-           image_url:data_image,
            hoten:value.hoten,
-           diachi:value.diachi,
-           gioitinh:value.gioitinh,
-           email:value.email,
            taikhoan:value.taikhoan,
            matkhau:value.matkhau,
-           role:value.role,
-           ngaysinh:value.ngaysinh           
+           role:value.role,    
+           sotien:value = "0"
           };
-        this._api.post('/api/users/create-user',tmp).takeUntil(this.unsubscribe).subscribe(res => {
+          console.log(tmp);
+        this._api.post('/api/Users/create-user',tmp).takeUntil(this.unsubscribe).subscribe(res => {
           alert('Thêm thành công');
           this.search();
           this.closeModal();
           });
-      });
     } else { 
-      this.getEncodeFromImage(this.file_image).subscribe((data: any): void => {
-        let data_image = data == '' ? null : data;
         let tmp = {
-           image_url:data_image,
-           hoten:value.hoten,
-           diachi:value.diachi,
-           gioitinh:value.gioitinh,
-           email:value.email,
-           taikhoan:value.taikhoan,
-           matkhau:value.matkhau,
-           role:value.role,
-           ngaysinh:value.ngaysinh ,
-           user_id:this.user.user_id,          
+          hoten:value.hoten,
+          taikhoan:value.taikhoan,
+          matkhau:value.matkhau,
+          role:value.role,
+          sotien:value = "0",   
+           id:this.user.id,          
           };
-        this._api.post('/api/users/update-user',tmp).takeUntil(this.unsubscribe).subscribe(res => {
+        this._api.post('/api/Users/update-user',tmp).takeUntil(this.unsubscribe).subscribe(res => {
           alert('Cập nhật thành công');
           this.search();
           this.closeModal();
           });
-      });
     }
    
   } 
 
   onDelete(row) { 
-    this._api.post('/api/users/delete-user',{user_id:row.user_id}).takeUntil(this.unsubscribe).subscribe(res => {
+    this._api.post('/api/Users/delete-user',{id:row.id}).takeUntil(this.unsubscribe).subscribe(res => {
       alert('Xóa thành công');
       this.search(); 
       });
@@ -126,12 +116,8 @@ export class UserComponent extends BaseComponent implements OnInit {
     this.user = null;
     this.formdata = this.fb.group({
       'hoten': ['', Validators.required],
-      'ngaysinh': [this.today, Validators.required],
-      'diachi': [''],
-      'gioitinh': [this.genders[0].value, Validators.required],
-      'email': ['', [Validators.required,Validators.email]],
       'taikhoan': ['', Validators.required],
-      'matkhau': ['', [this.pwdCheckValidator]],
+      'matkhau': ['', Validators.required],
       'nhaplaimatkhau': ['', Validators.required],
       'role': [this.roles[0].value, Validators.required],
     }, {
@@ -148,19 +134,14 @@ export class UserComponent extends BaseComponent implements OnInit {
       $('#createUserModal').modal('toggle');
       this.formdata = this.fb.group({
         'hoten': ['', Validators.required],
-        'ngaysinh': ['', Validators.required],
-        'diachi': [''],
-        'gioitinh': ['', Validators.required],
-        'email': ['', [Validators.required,Validators.email]],
         'taikhoan': ['', Validators.required],
-        'matkhau': ['', [this.pwdCheckValidator]],
+        'matkhau': ['', Validators.required],
         'nhaplaimatkhau': ['', Validators.required],
         'role': ['', Validators.required],
+        'sotien': ['0']
       }, {
         validator: MustMatch('matkhau', 'nhaplaimatkhau')
       });
-      this.formdata.get('ngaysinh').setValue(this.today);
-      this.formdata.get('gioitinh').setValue(this.genders[0].value); 
       this.formdata.get('role').setValue(this.roles[0].value);
       this.doneSetupForm = true;
     });
@@ -172,19 +153,16 @@ export class UserComponent extends BaseComponent implements OnInit {
     this.isCreate = false;
     setTimeout(() => {
       $('#createUserModal').modal('toggle');
-      this._api.get('/api/users/get-by-id/'+ row.user_id).takeUntil(this.unsubscribe).subscribe((res:any) => {
+      this._api.get('/api/Users/get-by-id/'+ row.id).takeUntil(this.unsubscribe).subscribe((res:any) => {
         this.user = res; 
-        let ngaysinh = new Date(this.user.ngaysinh);
+        console.log(this.user);
           this.formdata = this.fb.group({
             'hoten': [this.user.hoten, Validators.required],
-            'ngaysinh': [ngaysinh, Validators.required],
-            'diachi': [this.user.diachi],
-            'gioitinh': [this.user.gioitinh, Validators.required],
-            'email': [this.user.email, [Validators.required,Validators.email]],
-            'taikhoan': [this.user.taikhoan, Validators.required],
-            'matkhau': [this.user.matkhau, [this.pwdCheckValidator]],
-            'nhaplaimatkhau': [this.user.matkhau, Validators.required],
-            'role': [this.user.role, Validators.required],
+            'taikhoan': [this.user.username, Validators.required],
+            'matkhau': [this.user.password,  Validators.required],
+            'nhaplaimatkhau': [this.user.password, Validators.required],
+            'role': [this.user.level, Validators.required],
+            'sotien': ['0']
           }, {
             validator: MustMatch('matkhau', 'nhaplaimatkhau')
           }); 

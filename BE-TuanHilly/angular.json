@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "admin": {
+    "Admin_WebsiteGame": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/admin",
+            "outputPath": "dist/Admin_WebsiteGame",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,22 +24,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/bootstrap.min.css",
-              "src/assets/font-awesome/4.2.0/css/font-awesome.min.css",      
-              "src/assets/fonts/fonts.googleapis.com.css",        
-              "src/assets/css/ace.min.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/saga-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "src/styles.css"      
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
             ],
-            "scripts": [
-              "src/assets/js/jquery.2.1.1.min.js",
-              "src/assets/js/bootstrap.min.js",
-              "src/assets/js/ace-elements.min.js", 
-              "src/assets/js/ace-extra.min.js",
-              "src/assets/js/ace.min.js"                       
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -75,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "admin:build"
+            "browserTarget": "Admin_WebsiteGame:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "admin:build:production"
+              "browserTarget": "Admin_WebsiteGame:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "admin:build"
+            "browserTarget": "Admin_WebsiteGame:build"
           }
         },
         "test": {
@@ -123,19 +111,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "admin:serve"
+            "devServerTarget": "Admin_WebsiteGame:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "admin:serve:production"
+              "devServerTarget": "Admin_WebsiteGame:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "admin",
+  "defaultProject": "Admin_WebsiteGame",
   "cli": {
-    "analytics": "9e4174ca-a4c0-4af9-aca4-6db3b02da64f"
+    "analytics": "5c166476-d145-4cbf-98f1-ba87ddd00ebe"
   }
 }

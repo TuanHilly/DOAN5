@@ -1,33 +1,47 @@
-import { SharedModule } from 'src/app/shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { Routes, RouterModule,  PreloadAllModules } from '@angular/router';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorInterceptor } from './lib/error.interceptor';
 import { JwtInterceptor } from './lib/jwt.interceptor';
+import { AuthGuard } from './lib/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { RoleGuard } from './lib/auth.guard';
+import { Role } from './models/role';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
+
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+];
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent    
+    LoginComponent,
   ],
   imports: [
-    SharedModule,
     BrowserModule,
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     HttpClientModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    SharedModule,
+    NgbModule,
+    FormsModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-],
+  exports: [RouterModule],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,6 +9,7 @@ import { NotFoundComponent } from './Block/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CheckoutComponent } from './Pages/customer/checkout/checkout.component';
 
 
 

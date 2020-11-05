@@ -3,45 +3,29 @@
     <div class="ps-container">
       <form class="ps-checkout__form" action="do_action" method="post">
         <div class="row">
-          <form [formGroup]="hoadonForm" (ngSubmit)="onSubmit(hoadonForm.value)">
-              <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+              <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " [formGroup]="hoadonForm" (ngSubmit)="onSubmit(hoadonForm.value)">
                 <div class="ps-checkout__billing">
                   <h3>Billing Detail</h3>
                         <div class="form-group form-group--inline">
-                          <label>First Name<span class="required">*</span>
+                          <label>Your Name<span class="required">*</span>
                           </label>
                           <input class="form-control" type="text" formControlName="name">
                         </div>
-                        <!-- <div class="form-group form-group--inline">
-                          <label>Last Name<span>*</span>
-                          </label>
-                          <input class="form-control" type="text">
-                        </div> -->
                         <div class="form-group form-group--inline">
-                          <label>address<span class="required">*</span>
+                          <label>Address<span class="required">*</span>
                           </label>
                           <input class="form-control" type="text" formControlName="address">
                         </div>
                         <div class="form-group form-group--inline">
-                          <label>phone<span>*</span>
+                          <label>Phone<span class="required">*</span>
                           </label>
                           <input class="form-control" type="text" formControlName="phone">
                         </div>
                         <div class="form-group form-group--inline">
-                          <label>email<span class="required">*</span>
+                          <label>Email Address<span class="required">*</span>
                           </label>
-                          <input class="form-control" type="text" formControlName="email">
+                          <input class="form-control" type="email" formControlName="email">
                         </div>
-                        <!-- <div class="form-group form-group--inline">
-                          <label>Phone<span>*</span>
-                          </label>
-                          <input class="form-control" type="text">
-                        </div> -->
-                        <!-- <div class="form-group form-group--inline">
-                          <label>Address<span>*</span>
-                          </label>
-                          <input class="form-control" type="text">
-                        </div> -->
                   <div class="form-group">
                     <div class="ps-checkbox">
                       <input class="form-control" type="checkbox" id="cb01">
@@ -63,28 +47,32 @@
                   <div class="content">
                     <table class="table ps-checkout__products">
                       <thead>
-                        <tr>
+                        <tr >
                           <th class="text-uppercase">Product</th>
                           <th class="text-uppercase">Total</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>HABITANT x1</td>
-                          <td>$300.00</td>
-                        </tr>
-                        <tr>
-                          <td>Card Subtitle</td>
-                          <td>$300.00</td>
-                        </tr>
-                        <tr>
-                          <td>Order Total</td>
-                          <td>$300.00</td>
+                        <tr *ngFor="let it of items">
+                          <td class="product-name">
+                            {{ it.name_pro}}<strong class="product-quantity"> {{it.name}}  {{ it.quantity_sale }}</strong>
+                        </td>
+                        <td class="product-total">
+                            <span class="amount">{{ it.money |number }}</span>
+                        </td>
                         </tr>
                       </tbody>
+                      <tfoot>
+                        <tr class="order-total" >
+                            <th style="color: azure; ">Order Total</th>
+                            <td style="color: azure;float: left; "><strong><span class="amount">{{ total |number  }}</span></strong>
+                            </td>
+                        </tr>
+                    </tfoot>
                     </table>
                   </div>
-                  <footer>
+                  <button class="ps-btn ps-btn--fullwidth" type="submit" >Place Order<i class="ps-icon-next"></i></button>
+                  <!-- <footer>
                     <h3>Payment Method</h3>
                     <div class="form-group cheque">
                       <div class="ps-radio">
@@ -103,36 +91,17 @@
                         <li><a href="#"><img src="images/payment/2.png" alt=""></a></li>
                         <li><a href="#"><img src="images/payment/3.png" alt=""></a></li>
                       </ul>
-                      <button class="ps-btn ps-btn--fullwidth">Place Order<i class="ps-icon-next"></i></button>
+                      <button class="ps-btn ps-btn--fullwidth" >Place Order<i class="ps-icon-next"></i></button>
                     </div>
-                  </footer>
+                  </footer> -->
                 </div>
                 <div class="ps-shipping">
                   <h3>FREE SHIPPING</h3>
                   <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on every order, every time.</p>
                 </div>
               </div>
-            </form>
         </div>
       </form>
-    </div>
-  </div>
-  <div class="ps-subscribe">
-    <div class="ps-container">
-      <div class="row">
-            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
-              <h3><i class="fa fa-envelope"></i>Sign up to Newsletter</h3>
-            </div>
-            <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12 ">
-              <form class="ps-subscribe__form" action="do_action" method="post">
-                <input class="form-control" type="text" placeholder="">
-                <button>Sign up now</button>
-              </form>
-            </div>
-            <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 ">
-              <p>...and receive  <span>$20</span>  coupon for first shopping.</p>
-            </div>
-      </div>
     </div>
   </div>
 </main>

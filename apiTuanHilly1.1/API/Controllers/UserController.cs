@@ -1,35 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using BLL;
+using System.Threading.Tasks;
+using BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Model;
 
 namespace API.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+
+    public class UsersController : ControllerBase
     {
-        private IUserBLL _userBLL;
+        private IUserBLL users;
         private string _path;
-        public UserController(IUserBLL userBLL, IConfiguration configuration)
+        public UsersController(IUserBLL userbsn, IConfiguration configuration)
         {
-            _userBLL = userBLL;
+            users = userbsn;
             _path = configuration["AppSettings:PATH"];
         }
-
         [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] AuthenticateModel model)
         {
-            var user = _userBLL.Authenticate(model.Username, model.Password);
+            var user = users.Authenticate(model.Username, model.Password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -62,61 +61,35 @@ namespace API.Controllers
                 return ex.Message;
             }
         }
-
-        [Route("delete-user")]
-        [HttpPost]
-        public IActionResult DeleteUser([FromBody] Dictionary<string, object> formData)
+        [Route("get-user")]
+        [HttpGet]//chúng ta cần cài method
+        public IEnumerable<UserModel> getuser()
         {
-            string user_id = "";
-            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
-            _userBLL.Delete(user_id);
-            return Ok();
+            return users.get().ToList();
         }
-
         [Route("create-user")]
         [HttpPost]
         public UserModel CreateUser([FromBody] UserModel model)
         {
-            if (model.Image_url != null)
-            {
-                var arrData = model.Image_url.Split(';');
-                if (arrData.Length == 3)
-                {
-                    var savePath = $@"assets/images/{arrData[0]}";
-                    model.Image_url = $"{savePath}";
-                    SaveFileFromBase64String(savePath, arrData[2]);
-                }
-            }
-            model.ID = Guid.NewGuid().ToString();
-            _userBLL.Create(model);
+            model.id = Guid.NewGuid().ToString();
+            users.CreateUser(model);
             return model;
         }
-
-        [Route("update-user")]
+        [Route("delete-user")]
         [HttpPost]
-        public UserModel UpdateUser([FromBody] UserModel model)
+        public IActionResult Delete([FromBody] Dictionary<string, object> formData)
         {
-            if (model.Image_url != null)
-            {
-                var arrData = model.Image_url.Split(';');
-                if (arrData.Length == 3)
-                {
-                    var savePath = $@"assets/images/{arrData[0]}";
-                    model.Image_url = $"{savePath}";
-                    SaveFileFromBase64String(savePath, arrData[2]);
-                }
-            }
-            _userBLL.Create(model);
-            return model;
+            string id = "";
+            if (formData.Keys.Contains("id") && !string.IsNullOrEmpty(Convert.ToString(formData["id"]))) { id = Convert.ToString(formData["id"]); }
+            users.Delete(id);
+            return Ok();
         }
-
         [Route("get-by-id/{id}")]
         [HttpGet]
         public UserModel GetDatabyID(string id)
         {
-            return _userBLL.GetDatabyID(id);
+            return users.GetDatabyID(id);
         }
-
         [Route("search")]
         [HttpPost]
         public ResponseModel Search([FromBody] Dictionary<string, object> formData)
@@ -131,7 +104,7 @@ namespace API.Controllers
                 string taikhoan = "";
                 if (formData.Keys.Contains("taikhoan") && !string.IsNullOrEmpty(Convert.ToString(formData["taikhoan"]))) { hoten = Convert.ToString(formData["taikhoan"]); }
                 long total = 0;
-                var data = _userBLL.Search(page, pageSize, out total, hoten, taikhoan);
+                var data = users.Search(page, pageSize, out total, hoten, taikhoan);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;

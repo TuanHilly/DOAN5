@@ -19,8 +19,13 @@ export class ChitietComponent extends BaseComponent implements OnInit {
     this.item = {};
     this._route.params.subscribe(params => {
       let id = params['id'];
-      this._api.get('/api/Product/get-by-id/'+id).pipe(takeUntil(this.unsubscribe)).subscribe((res: any) => {
+      this._api.get('/api/Product/get-by-id/'+id).
+        takeUntil(this.unsubscribe)
+        .subscribe((res: any) => {
         this.item = res;});
+        setTimeout(() => {
+          this.loadScripts();
+        });
     });
   }
   addToCart(it) {

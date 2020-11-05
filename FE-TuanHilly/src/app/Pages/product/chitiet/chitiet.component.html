@@ -17,27 +17,20 @@
                 <div class="item"><img src="assets/images/shoe-detail/1.jpg" alt=""></div>
                 <div class="item"><img src="assets/images/shoe-detail/2.jpg" alt=""></div>
                 <div class="item"><img src="assets/images/shoe-detail/3.jpg" alt=""></div>
-                <div class="item"><img src="assets/images/shoe-detail/3.jpg" alt=""></div>
-                <div class="item"><img src="assets/images/shoe-detail/3.jpg" alt=""></div>
+                <!-- <div class="item"><img src="assets/images/shoe-detail/3.jpg" alt=""></div>
+                <div class="item"><img src="assets/images/shoe-detail/3.jpg" alt=""></div> -->
               </div>
             </div>
             <div class="ps-product__image">
-              <div class="item"><img class="zoom" src="assets/images/shoe-detail/1.jpg" alt="" data-zoom-image="assets/images/shoe-detail/1.jpg"></div>
-              <div class="item"><img class="zoom" src="assets/images/shoe-detail/2.jpg" alt="" data-zoom-image="assets/images/shoe-detail/2.jpg"></div>
-              <div class="item"><img class="zoom" src="assets/images/shoe-detail/3.jpg" alt="" data-zoom-image="assets/images/shoe-detail/3.jpg"></div>
-            </div>
+              <div class="item"><img class="zoom" src="assets/images/shoe-detail/{{item.image}}" alt="" ></div>
+              <!--class="zoom" src="assets/images/shoe-detail/{{item.image}} data-zoom-image="assets/images/shoe-detail/1.jpg" -->
           </div>
-          <div class="ps-product__thumbnail--mobile">
-            <div class="ps-product__main-img"><img src="assets/images/shoe-detail/{{item.image}}" alt=""></div>
-            <div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on">
-              <!-- <img src="assets/images/shoe-detail/1.jpg" alt=""><img src="assets/images/shoe-detail/2.jpg" alt=""><img src="assets/images/shoe-detail/3.jpg" alt=""> -->
 
-            </div>
           </div>
           <div class="ps-product__info">
             <h1>{{item.name}} </h1>
             <p class="ps-product__category"><a href="#"> Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p>
-            <h3 class="ps-product__price">£ 115 <del>£ 330</del></h3>
+            <h3 class="ps-product__price">{{item.unit_price}} <del>£ 330</del></h3>
             <div class="ps-product__block ps-product__quickview">
               <h4>QUICK REVIEW</h4>
               <p>The Nike Free RN 2017 Men's Running Sky weighs less than previous versions and features an updated knit material…</p>
@@ -52,30 +45,21 @@
               </ul>
             </div>
             <div class="ps-product__block ps-product__size">
-              <h4>CHOOSE SIZE<a href="#">Size chart</a></h4>
+              <h4>CHOOSE SIZE</h4>
               <select class="ps-select selectpicker">
-                <option value="1">Select Size</option>
-                <option value="2">4</option>
-                <option value="3">4.5</option>
-                <option value="3">5</option>
-                <option value="3">6</option>
-                <option value="3">6.5</option>
-                <option value="3">7</option>
-                <option value="3">7.5</option>
-                <option value="3">8</option>
-                <option value="3">8.5</option>
-                <option value="3">9</option>
-                <option value="3">9.5</option>
-                <option value="3">10</option>
+                <option>{{item.size}}</option>
               </select>
               <div class="form-group">
-                <input class="form-control" type="number" value="1">
+                <input class="form-control" type="number" name="quantity" min='1' [max]="item.quantity"title="Qty">
               </div>
             </div>
             <div class="ps-product__shopping">
-              <a class="ps-btn mb-10" [routerLink]="['/customer/cart']" (click)="addToCart(item)">
+              <div class="cart-plus-minus">
+            </div>
+              <a class="ps-btn mb-10"  (click)="addToCart(item)" type="submit">
+                <!-- [routerLink]="['/customer/cart']" -->
               Add to cart
-              <i class="ps-icon-next"></i></a>
+              <i class="ps-icon-next" ></i></a>
               <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
             </div>
           </div>
