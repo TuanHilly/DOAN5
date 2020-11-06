@@ -15,7 +15,7 @@ export class CartService {
   }
 
   addToCart(item) {
-    item.quantity = 1;
+    item.quantity_sale = 1;
     let local_storage:any;
     if (localStorage.getItem('cart') == null) {
       local_storage = [item];

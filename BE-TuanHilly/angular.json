@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Admin_WebsiteGame": {
+    "AdminDongHo": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Admin_WebsiteGame",
+            "outputPath": "dist/AdminDongHo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +24,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -63,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Admin_WebsiteGame:build"
+            "browserTarget": "AdminDongHo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Admin_WebsiteGame:build:production"
+              "browserTarget": "AdminDongHo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Admin_WebsiteGame:build"
+            "browserTarget": "AdminDongHo:build"
           }
         },
         "test": {
@@ -111,19 +110,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Admin_WebsiteGame:serve"
+            "devServerTarget": "AdminDongHo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Admin_WebsiteGame:serve:production"
+              "devServerTarget": "AdminDongHo:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Admin_WebsiteGame",
+  "defaultProject": "AdminDongHo",
   "cli": {
-    "analytics": "5c166476-d145-4cbf-98f1-ba87ddd00ebe"
+    "analytics": "72229931-539c-445a-ba61-806bcc00a46f"
   }
 }

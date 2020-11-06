@@ -18,7 +18,7 @@
             <td>
               <div class="form-group--number">
 
-                <input type="number" class="input-text" [min]='1' [max]="i.quantity"title="Qty" #inp  name="qtybutton"  (change)="addQty(i,inp.value)" [value]="i.quantity_sale">
+                <input type="number" class="input-text" min='1' [max]="i.quantity" title="Qty" #inp  name="qtybutton"  (change)="addQty(i,inp.value)" [value]="i.quantity_sale">
 
               </div>
             </td>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="ps-cart__total">
-          <h3>Total Price: <span> 2599.00 $</span></h3><a class="ps-btn" routerLink="/customer/checkout">Process to checkout<i class="ps-icon-next"></i></a>
+          <h3>Total Price: <span>{{total |number}}</span></h3><a class="ps-btn" routerLink="/customer/checkout">Process to checkout<i class="ps-icon-next"></i></a>
         </div>
       </div>
     </div>

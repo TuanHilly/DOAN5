@@ -1,13 +1,17 @@
-﻿using BLL.Interfaces;
-using DAL.Interfaces;
+﻿using DAL;
 using Microsoft.Extensions.Configuration;
+using System;
+
 using Microsoft.IdentityModel.Tokens;
 using Model;
-using System;
+
+using Helper;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
+
 
 namespace BLL
 {
@@ -15,19 +19,10 @@ namespace BLL
     {
         private IUserDAL _res;
         private string Secret;
-
-        public List<UserModel> get()
-        {
-            return _res.GetDataAll();//nếu có xử lý thêm viết ở đây
-        }
         public UserBLL(IUserDAL res, IConfiguration configuration)
         {
             Secret = configuration["AppSettings:Secret"];
             _res = res;
-        }
-        public bool Delete(string id)
-        {
-            return _res.Delete(id);
         }
         public UserModel Authenticate(string username, string password)
         {
@@ -43,7 +38,7 @@ namespace BLL
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.hoten.ToString()),
+                    new Claim(ClaimTypes.Name, user.name.ToString()),
                     new Claim(ClaimTypes.Role, user.role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
@@ -55,18 +50,28 @@ namespace BLL
             return user;
 
         }
-
-        public UserModel GetDatabyID(string id)
+        public IEnumerable<UserModel> GetAll()
         {
-            return _res.GetDatabyID(id);
+            return _res.GetAll();
         }
-        public bool CreateUser(UserModel model)
+        public UserModel GetById(string id)
         {
-            return _res.CreateUser(model);
+            return _res.GetById(id);
+        }
+
+
+        public bool Create(UserModel model)
+        {
+            return _res.Create(model);
         }
         public bool Update(UserModel model)
         {
             return _res.Update(model);
+        }
+
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
         }
         public List<UserModel> Search(int pageIndex, int pageSize, out long total, string hoten, string taikhoan)
         {

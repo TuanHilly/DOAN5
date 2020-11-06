@@ -1,95 +1,92 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using BLL.Interfaces;
+using BLL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Model;
 
 namespace API.Controllers
 {
+    // [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-
     public class UsersController : ControllerBase
     {
-        private IUserBLL users;
-        private string _path;
-        public UsersController(IUserBLL userbsn, IConfiguration configuration)
+        private IUserBLL _userBusiness;
+
+        public UsersController(IUserBLL userService)
         {
-            users = userbsn;
-            _path = configuration["AppSettings:PATH"];
+            _userBusiness = userService;
         }
+
         [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] AuthenticateModel model)
         {
-            var user = users.Authenticate(model.Username, model.Password);
+            var user = _userBusiness.Authenticate(model.username, model.password);
 
             if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Tài khoản hoặc mật khẩu không hợp lệ!" });
 
             return Ok(user);
         }
-        public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
+
+        //[Authorize(Roles = Role.User)]
+
+        [HttpGet]
+        [Route("get-all")]
+        public IActionResult GetAll()
         {
-            if (dataFromBase64String.Contains("base64,"))
-            {
-                dataFromBase64String = dataFromBase64String.Substring(dataFromBase64String.IndexOf("base64,", 0) + 7);
-            }
-            return WriteFileToAuthAccessFolder(RelativePathFileName, dataFromBase64String);
+            var users = _userBusiness.GetAll();
+            return Ok(users);
         }
-        public string WriteFileToAuthAccessFolder(string RelativePathFileName, string base64StringData)
+
+        //[Authorize(Roles = Role.User)]
+        [HttpGet("get-by-id/{id}")]
+        public IActionResult GetById(string id)
         {
-            try
-            {
-                string result = "";
-                string serverRootPathFolder = _path;
-                string fullPathFile = $@"{serverRootPathFolder}\{RelativePathFileName}";
-                string fullPathFolder = System.IO.Path.GetDirectoryName(fullPathFile);
-                if (!Directory.Exists(fullPathFolder))
-                    Directory.CreateDirectory(fullPathFolder);
-                System.IO.File.WriteAllBytes(fullPathFile, Convert.FromBase64String(base64StringData));
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            // only allow admins to access other user records
+            var currentUserId = int.Parse(User.Identity.Name);
+            //  if (id != currentUserId && !User.IsInRole(Role.Admin))
+            //      return Forbid();
+
+            var user = _userBusiness.GetById(id);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
         }
-        [Route("get-user")]
-        [HttpGet]//chúng ta cần cài method
-        public IEnumerable<UserModel> getuser()
-        {
-            return users.get().ToList();
-        }
-        [Route("create-user")]
-        [HttpPost]
-        public UserModel CreateUser([FromBody] UserModel model)
-        {
-            model.id = Guid.NewGuid().ToString();
-            users.CreateUser(model);
-            return model;
-        }
+
         [Route("delete-user")]
         [HttpPost]
-        public IActionResult Delete([FromBody] Dictionary<string, object> formData)
+        public IActionResult DeleteUser([FromBody] Dictionary<string, object> formdata)
         {
-            string id = "";
-            if (formData.Keys.Contains("id") && !string.IsNullOrEmpty(Convert.ToString(formData["id"]))) { id = Convert.ToString(formData["id"]); }
-            users.Delete(id);
+            string user_id = "";
+            if (formdata.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formdata["user_id"]))) { user_id = Convert.ToString(formdata["user_id"]); }
+            _userBusiness.Delete(user_id);
             return Ok();
         }
-        [Route("get-by-id/{id}")]
-        [HttpGet]
-        public UserModel GetDatabyID(string id)
+        [Route("create_user")]
+        [HttpPost]
+
+        public UserModel CreateUser([FromBody] UserModel model)
         {
-            return users.GetDatabyID(id);
+            model.user_id = Guid.NewGuid().ToString();
+            _userBusiness.Create(model);
+            return model;
         }
+        [Route("update-user")]
+        [HttpPost]
+        public UserModel UpdateUser([FromBody] UserModel model)
+        {
+            _userBusiness.Update(model);
+            return model;
+        }
+
         [Route("search")]
         [HttpPost]
         public ResponseModel Search([FromBody] Dictionary<string, object> formData)
@@ -99,16 +96,17 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string hoten = "";
-                if (formData.Keys.Contains("hoten") && !string.IsNullOrEmpty(Convert.ToString(formData["hoten"]))) { hoten = Convert.ToString(formData["hoten"]); }
-                string taikhoan = "";
-                if (formData.Keys.Contains("taikhoan") && !string.IsNullOrEmpty(Convert.ToString(formData["taikhoan"]))) { hoten = Convert.ToString(formData["taikhoan"]); }
+                string name = "";
+                if (formData.Keys.Contains("name") && !string.IsNullOrEmpty(Convert.ToString(formData["name"]))) { name = Convert.ToString(formData["name"]); }
+                string username = "";
+                if (formData.Keys.Contains("username") && !string.IsNullOrEmpty(Convert.ToString(formData["username"]))) { username = Convert.ToString(formData["username"]); }
                 long total = 0;
-                var data = users.Search(page, pageSize, out total, hoten, taikhoan);
+                var data = _userBusiness.Search(page, pageSize, out total, name, username);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;
                 response.PageSize = pageSize;
+
             }
             catch (Exception ex)
             {

@@ -1,47 +1,46 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule,  PreloadAllModules } from '@angular/router';
-import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './lib/jwt.interceptor';
-import { AuthGuard } from './lib/auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+//import { BaseComponent } from './common/base-component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { RoleGuard } from './lib/auth.guard';
-import { Role } from './models/role';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MainComponent } from './main/main.component';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { OrderComponent } from './main/product/order/order.component';
+import { ProductComponent } from './main/product/product/product.component';
+import { TypeComponent } from './main/product/type/type.component';
+import { UserComponent } from './main/user/user/user.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
-
-
-const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
-    canActivate: [RoleGuard],
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-];
 @NgModule({
   declarations: [
     AppComponent,
+    // BaseComponent,
     LoginComponent,
+    //  MainComponent,
+    //  DashboardComponent,
+    //  OrderComponent,
+    //  ProductComponent,
+    // TypeComponent,
+    // UserComponent,
+    // FooterComponent,
+    // NavbarComponent,
+    // SidebarComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
-    SharedModule,
-    NgbModule,
-    FormsModule
   ],
-  exports: [RouterModule],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

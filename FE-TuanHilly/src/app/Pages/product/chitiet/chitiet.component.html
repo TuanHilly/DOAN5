@@ -49,15 +49,15 @@
               <select class="ps-select selectpicker">
                 <option>{{item.size}}</option>
               </select>
-              <div class="form-group">
-                <input class="form-control" type="number" name="quantity" min='1' [max]="item.quantity"title="Qty">
-              </div>
+              <!-- <div class="form-group">
+                <input class="form-control" type="number" name="quantity" min='1' [max]="item.quantity"title="Qty" >
+              </div> -->
             </div>
             <div class="ps-product__shopping">
               <div class="cart-plus-minus">
             </div>
-              <a class="ps-btn mb-10"  (click)="addToCart(item)" type="submit">
-                <!-- [routerLink]="['/customer/cart']" -->
+              <a class="ps-btn mb-10"  (click)="addToCart(item)" type="submit"
+                [routerLink]="['/customer/cart']">
               Add to cart
               <i class="ps-icon-next" ></i></a>
               <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
