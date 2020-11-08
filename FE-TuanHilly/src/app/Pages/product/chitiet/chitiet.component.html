@@ -38,16 +38,15 @@
             <div class="ps-product__block ps-product__style">
               <h4>CHOOSE YOUR STYLE</h4>
               <ul>
-                <li><a href="product-detail.html"><img src="assets/images/shoe/sidebar/1.jpg" alt=""></a></li>
-                <li><a href="product-detail.html"><img src="assets/images/shoe/sidebar/2.jpg" alt=""></a></li>
-                <li><a href="product-detail.html"><img src="assets/images/shoe/sidebar/3.jpg" alt=""></a></li>
-                <li><a href="product-detail.html"><img src="assets/images/shoe/sidebar/2.jpg" alt=""></a></li>
+                <li><a href="product-detail.html"><img src="assets/images/shoe-detail/1.jpg" alt=""></a></li>
+                <li><a href="product-detail.html"><img src="assets/images/shoe-detail/2.jpg" alt=""></a></li>
+                <li><a href="product-detail.html"><img src="assets/images/shoe-detail/3.jpg" alt=""></a></li>
               </ul>
             </div>
             <div class="ps-product__block ps-product__size">
               <h4>CHOOSE SIZE</h4>
-              <select class="ps-select selectpicker">
-                <option>{{item.size}}</option>
+              <select class=" ">
+                <option><p>{{item.size}}</p></option>
               </select>
               <!-- <div class="form-group">
                 <input class="form-control" type="number" name="quantity" min='1' [max]="item.quantity"title="Qty" >
@@ -74,8 +73,7 @@
           </div>
           <div class="tab-content mb-60">
             <div class="tab-pane active" role="tabpanel" id="tab_01">
-              <p>Caramels tootsie roll carrot cake sugar plum. Sweet roll jelly bear claw liquorice. Gingerbread lollipop dragée cake. Pie topping jelly-o. Fruitcake dragée candy canes tootsie roll. Pastry jelly-o cupcake. Bonbon brownie soufflé muffin.</p>
-              <p>Sweet roll soufflé oat cake apple pie croissant. Pie gummi bears jujubes cake lemon drops gummi bears croissant macaroon pie. Fruitcake tootsie roll chocolate cake Carrot cake cake bear claw jujubes topping cake apple pie. Jujubes gummi bears soufflé candy canes topping gummi bears cake soufflé cake. Cotton candy soufflé sugar plum pastry sweet roll..</p>
+              {{item.description}}
             </div>
             <div class="tab-pane" role="tabpanel" id="tab_02">
               <p class="mb-20">1 review for <strong>Shoes Air Jordan</strong></p>
@@ -167,19 +165,20 @@
       <div class="ps-section__content">
         <div class="ps-owl--colection owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="4" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-duration="1000" data-owl-mousedrag="on">
           <div class="ps-shoes--carousel">
+
             <div class="ps-shoe">
               <div class="ps-shoe__thumbnail">
-                <div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="assets/images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+                <div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="assets/images/shoe/{{item.image}}" alt="">
               </div>
               <div class="ps-shoe__content">
-                <div class="ps-shoe__variants">
-                  <div class="ps-shoe__variant normal"><img src="assets/images/shoe/2.jpg" alt=""><img src="assets/images/shoe/3.jpg" alt=""><img src="assets/images/shoe/4.jpg" alt=""><img src="assets/images/shoe/5.jpg" alt=""></div>
-                </div>
+
                 <div class="ps-shoe__detail"><a class="ps-shoe__name" href="product-detai.html">Air Jordan 7 Retro</a>
                   <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>
                 </div>
               </div>
             </div>
+
+
           </div>
         </div>
       </div>

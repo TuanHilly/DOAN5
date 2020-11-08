@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
+
 const routesConfig: Routes = [
 
   { path: 'chitiet/:id', component: ChitietComponent },
