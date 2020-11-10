@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL;
-
+using BLL.Interfaces;
 using DAL;
 using DAL.Helper;
-
+using DAL.Interfaces;
 using Helper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -48,7 +48,7 @@ namespace API
 
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
-            //var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -61,7 +61,7 @@ namespace API
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    //IssuerSigningKey = new SymmetricSecurityKey(key),
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
@@ -78,6 +78,8 @@ namespace API
             services.AddTransient<IBillDAL, BillDAL>();
             services.AddTransient<IUserDAL, UserDAL>();
             services.AddTransient<IUserBLL, UserBLL>();
+            services.AddTransient<IKhachHangBLL, KhachHangBLL>();
+            services.AddTransient<IKhachHangDAL, KhachHangDAL>();
 
         }
 
@@ -97,7 +99,7 @@ namespace API
                .AllowAnyOrigin()
                .AllowAnyMethod()
                .AllowAnyHeader());
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

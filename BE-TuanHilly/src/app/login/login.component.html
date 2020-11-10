@@ -1,64 +1,29 @@
-<div class="hold-transition login-page">
-  <div class="login-box">
-    <div class="login-logo">
-      <a href="index2.html"><b>Admin</b>LTE</a>
+<div class="page-container" style="background: url(../assets/images/LOGIN_BG_AiO.png) center no-repeat; background-size: cover">
+    <div class="page-login-box">
+        <div class="page-login-widget animated fadeInRight">
+            <h1>Đăng nhập</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="ui-form-group">
+                    <input type="text" formControlName="username" placeholder="Tên tài khoản">
+                </div>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Chưa nhập tài khoản!</div>
+                </div>
+                <div class="ui-form-group">
+                    <input type="password" formControlName="password" placeholder="Mật khẩu">
+                </div>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Chưa nhập mật khẩu!</div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input formControlName="remember" type="checkbox" class="ace">
+                        <span class="lbl">Ghi nhớ</span>
+                    </label>
+                </div>
+                <button [disabled]="loginForm.invalid || loading" type="submit">
+                    Đăng nhập</button>
+            </form> 
+        </div>
     </div>
-    <!-- /.login-logo -->
-    <div class="card">
-      <div class="card-body login-card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
-        </div>
-
-
-        <div class="social-auth-links text-center mb-3">
-          <p>- OR -</p>
-          <a href="#" class="btn btn-block btn-primary">
-            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-          </a>
-          <a href="#" class="btn btn-block btn-danger">
-            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-          </a>
-        </div>
-        <!-- /.social-auth-links -->
-
-        <p class="mb-1">
-          <a href="forgot-password.html">I forgot my password</a>
-        </p>
-        <p class="mb-0">
-          <a href="register.html" class="text-center">Register a new membership</a>
-        </p>
-      </div>
-      <!-- /.login-card-body -->
-    </div>
-  </div>
 </div>

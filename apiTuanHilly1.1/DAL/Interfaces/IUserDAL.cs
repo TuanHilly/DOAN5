@@ -3,17 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL
+namespace DAL.Interfaces
 {
-    public partial interface IUserDAL
+    public interface IUserDAL
     {
-        UserModel GetUser(string usename, string password);
-        IEnumerable<UserModel> GetAll();
-        UserModel GetById(string id);
-        bool Create(UserModel model);
-        bool Update(UserModel model);
+        User GetUser(string username, string password);
+        User GetDatabyID(string id);
+        bool Create(User model);
+        bool Update(User model);
         bool Delete(string id);
-        List<UserModel> Search(int pageIndex, int pageSize, out long total, string name, string username);
-
+        List<User> Search(int pageIndex, int pageSize, out long total, string hoten, string taikhoan);
     }
 }

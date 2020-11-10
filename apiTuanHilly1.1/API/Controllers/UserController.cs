@@ -1,90 +1,121 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 using BLL;
+using BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Model;
 
 namespace API.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
         private IUserBLL _userBusiness;
-
-        public UsersController(IUserBLL userService)
+        private string _path;
+        public UsersController(IUserBLL userBusiness, IConfiguration configuration)
         {
-            _userBusiness = userService;
+            _userBusiness = userBusiness;
+            _path = configuration["AppSettings:PATH"];
         }
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody] AuthenticateModel model)
+        public IActionResult Authenticate([FromBody] Authenticate model)
         {
-            var user = _userBusiness.Authenticate(model.username, model.password);
+            var user = _userBusiness.Authenticate(model.Username, model.Password);
 
             if (user == null)
-                return BadRequest(new { message = "Tài khoản hoặc mật khẩu không hợp lệ!" });
+                return BadRequest(new { message = "Username or password is incorrect" });
 
             return Ok(user);
         }
-
-        //[Authorize(Roles = Role.User)]
-
-        [HttpGet]
-        [Route("get-all")]
-        public IActionResult GetAll()
+        public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
-            var users = _userBusiness.GetAll();
-            return Ok(users);
+            if (dataFromBase64String.Contains("base64,"))
+            {
+                dataFromBase64String = dataFromBase64String.Substring(dataFromBase64String.IndexOf("base64,", 0) + 7);
+            }
+            return WriteFileToAuthAccessFolder(RelativePathFileName, dataFromBase64String);
         }
-
-        //[Authorize(Roles = Role.User)]
-        [HttpGet("get-by-id/{id}")]
-        public IActionResult GetById(string id)
+        public string WriteFileToAuthAccessFolder(string RelativePathFileName, string base64StringData)
         {
-            // only allow admins to access other user records
-            var currentUserId = int.Parse(User.Identity.Name);
-            //  if (id != currentUserId && !User.IsInRole(Role.Admin))
-            //      return Forbid();
-
-            var user = _userBusiness.GetById(id);
-
-            if (user == null)
-                return NotFound();
-
-            return Ok(user);
+            try
+            {
+                string result = "";
+                string serverRootPathFolder = _path;
+                string fullPathFile = $@"{serverRootPathFolder}\{RelativePathFileName}";
+                string fullPathFolder = System.IO.Path.GetDirectoryName(fullPathFile);
+                if (!Directory.Exists(fullPathFolder))
+                    Directory.CreateDirectory(fullPathFolder);
+                System.IO.File.WriteAllBytes(fullPathFile, Convert.FromBase64String(base64StringData));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         [Route("delete-user")]
         [HttpPost]
-        public IActionResult DeleteUser([FromBody] Dictionary<string, object> formdata)
+        public IActionResult DeleteUser([FromBody] Dictionary<string, object> formData)
         {
             string user_id = "";
-            if (formdata.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formdata["user_id"]))) { user_id = Convert.ToString(formdata["user_id"]); }
+            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
             _userBusiness.Delete(user_id);
             return Ok();
         }
-        [Route("create_user")]
-        [HttpPost]
 
-        public UserModel CreateUser([FromBody] UserModel model)
+        [Route("create-user")]
+        [HttpPost]
+        public User CreateUser([FromBody] User model)
         {
+            if (model.image_url != null)
+            {
+                var arrData = model.image_url.Split(';');
+                if (arrData.Length == 3)
+                {
+                    var savePath = $@"assets/images/{arrData[0]}";
+                    model.image_url = $"{savePath}";
+                    SaveFileFromBase64String(savePath, arrData[2]);
+                }
+            }
             model.user_id = Guid.NewGuid().ToString();
             _userBusiness.Create(model);
             return model;
         }
+
         [Route("update-user")]
         [HttpPost]
-        public UserModel UpdateUser([FromBody] UserModel model)
+        public User UpdateUser([FromBody] User model)
         {
+            if (model.image_url != null)
+            {
+                var arrData = model.image_url.Split(';');
+                if (arrData.Length == 3)
+                {
+                    var savePath = $@"assets/images/{arrData[0]}";
+                    model.image_url = $"{savePath}";
+                    SaveFileFromBase64String(savePath, arrData[2]);
+                }
+            }
             _userBusiness.Update(model);
             return model;
+        }
+
+        [Route("get-by-id/{id}")]
+        [HttpGet]
+        public User GetDatabyID(string id)
+        {
+            return _userBusiness.GetDatabyID(id);
         }
 
         [Route("search")]
@@ -96,17 +127,16 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string name = "";
-                if (formData.Keys.Contains("name") && !string.IsNullOrEmpty(Convert.ToString(formData["name"]))) { name = Convert.ToString(formData["name"]); }
-                string username = "";
-                if (formData.Keys.Contains("username") && !string.IsNullOrEmpty(Convert.ToString(formData["username"]))) { username = Convert.ToString(formData["username"]); }
+                string hoten = "";
+                if (formData.Keys.Contains("hoten") && !string.IsNullOrEmpty(Convert.ToString(formData["hoten"]))) { hoten = Convert.ToString(formData["hoten"]); }
+                string taikhoan = "";
+                if (formData.Keys.Contains("taikhoan") && !string.IsNullOrEmpty(Convert.ToString(formData["taikhoan"]))) { hoten = Convert.ToString(formData["taikhoan"]); }
                 long total = 0;
-                var data = _userBusiness.Search(page, pageSize, out total, name, username);
+                var data = _userBusiness.Search(page, pageSize, out total, hoten, taikhoan);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;
                 response.PageSize = pageSize;
-
             }
             catch (Exception ex)
             {
