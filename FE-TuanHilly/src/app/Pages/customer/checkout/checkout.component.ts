@@ -5,7 +5,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent extends BaseComponent implements OnInit {
 
@@ -25,6 +24,7 @@ export class CheckoutComponent extends BaseComponent implements OnInit {
     });
     this._cart.items.subscribe((res) => {
       this.items = res;
+
       this.total = 0;
       for (let x of this.items) {
         x.product_id = this.items.product_id;
@@ -35,16 +35,27 @@ export class CheckoutComponent extends BaseComponent implements OnInit {
     });
   }
   onSubmit(value: any) {
+    let ct=[];
+    this.items.forEach(element => {
+      let tg={
+        category_id:Number.parseInt(element.category_id),
+        quantity_sale:Number.parseInt(element.quantity_sale),
+        unit_price:Number.parseFloat(element.unit_price),
+
+      }
+      ct.push(tg);
+    });
     let hoadon = {
       name: value.name,
       address: value.address,
       phone: value.phone,
       email:value.email,
-      total: this.total,
-      listjson_chitiet: this.items,
+      total: Number.parseFloat(this.total),
+      listjson_chitiet: ct,
     };
+    console.log(hoadon);
     this._api
-      .post('api/bill/create-bill',hoadon)
+      .post('/api/bill/create-bill',hoadon)
       .takeUntil(this.unsubscribe)
       .subscribe(
         (res) => {

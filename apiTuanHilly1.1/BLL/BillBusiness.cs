@@ -6,10 +6,10 @@ using System.Text;
 
 namespace BLL
 {
-    public partial class BillBLL : IBillBLL
+    public partial class BillBusiness : IBillBusiness
     {
-        private IBillDAL _res;
-        public BillBLL(IBillDAL res)
+        private IBillResponsitory _res;
+        public BillBusiness(IBillResponsitory res)
         {
             _res = res;
         }

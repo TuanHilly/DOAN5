@@ -74,8 +74,8 @@ namespace API
             services.AddTransient<IProductBLL, ProductBLL>();
             services.AddTransient<IProductDAL, ProductDAL>();
 
-            services.AddTransient<IBillBLL, BillBLL>();
-            services.AddTransient<IBillDAL, BillDAL>();
+            services.AddTransient<IBillResponsitory, BillRepository>();
+            services.AddTransient<IBillBusiness, BillBusiness>();
             services.AddTransient<IUserDAL, UserDAL>();
             services.AddTransient<IUserBLL, UserBLL>();
             services.AddTransient<IKhachHangBLL, KhachHangBLL>();

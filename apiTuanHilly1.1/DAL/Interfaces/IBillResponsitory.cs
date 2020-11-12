@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BLL
+namespace DAL
 {
-    public partial interface IBillBLL
+   public partial interface IBillResponsitory
     {
         bool Create(BillModel model);
     }

@@ -7,10 +7,10 @@ using System.Text;
 namespace DAL
 {
 
-    public partial class BillDAL : IBillDAL
+    public partial class BillRepository : IBillResponsitory
     {
         private IDatabaseHelper _dbHelper;
-        public BillDAL(IDatabaseHelper dbHelper)
+        public BillRepository(IDatabaseHelper dbHelper)
         {
             _dbHelper = dbHelper;
         }

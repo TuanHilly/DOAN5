@@ -14,8 +14,8 @@ namespace API.Controllers
     [ApiController]
     public class BillController : ControllerBase
     {
-        private IBillBLL _hoaDonBusiness;
-        public BillController(IBillBLL hoaDonBusiness)
+        private IBillBusiness _hoaDonBusiness;
+        public BillController(IBillBusiness hoaDonBusiness)
         {
             _hoaDonBusiness = hoaDonBusiness;
         }
