@@ -1,0 +1,86 @@
+<main class="ps-main">
+  <div class="ps-checkout pt-80 pb-80">
+    <div class="ps-container">
+      <!-- <form class="ps-checkout__form" action="do_action" method="post"> -->
+        <div class="row">
+          <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
+              <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="ps-checkout__billing">
+                  <h3>Billing Detail</h3>
+                        <div class="form-group form-group--inline">
+                          <label>Your Name<span class="required">*</span>
+                          </label>
+                          <input class="form-control" type="text" formControlName="ho_ten">
+                        </div>
+                        <div class="form-group form-group--inline">
+                          <label>Address<span class="required">*</span>
+                          </label>
+                          <input class="form-control" type="text" formControlName="dia_chi">
+                        </div>
+                        <div class="form-group form-group--inline">
+                          <label>Phone<span class="required">*</span>
+                          </label>
+                          <input class="form-control" type="text" formControlName="sdt">
+                        </div>
+                  <div class="form-group">
+                    <div class="ps-checkbox">
+                      <input class="form-control" type="checkbox" id="cb01">
+                      <label for="cb01">Create an account?</label>
+                    </div>
+                  </div>
+                  <h3 class="mt-40"> Addition information</h3>
+                  <div class="form-group form-group--inline textarea">
+                    <label>Order Notes</label>
+                    <textarea class="form-control" rows="5" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                <div class="ps-checkout__order">
+                  <header>
+                    <h3>Your Order</h3>
+                  </header>
+                  <div class="content">
+                  <table class="table ps-checkout__products">
+                      <thead>
+                        <tr class="cart_menu" style="color: azure; ">
+                          <td class="image"><strong>Sản Phẩm</strong></td>
+                          <td class="quantity"><strong>Số Lượng</strong></td>
+                          <td class="total"><strong>Tổng Tiền</strong></td>
+                      </tr>
+                      </thead>
+                    <tbody>
+                      <tr  *ngFor="let it of items" style="color: rgba(241, 198, 198, 0.795); ">
+                          <td class="product-name">
+                            <a class="product-quantity">{{ it.tensp}}</a>
+                          </td>
+                          <td class="cart_quantity">
+                              <a>{{it.quantity}}</a>
+                          </td>
+                          <td class="cart_total">
+                            <a>{{it.dongia * it.quantity | currency:"VND" }}</a>
+                          </td>
+                      </tr>
+                      <tr class="order-total" >
+                        <th style="color: rgba(243, 243, 243, 0.795); "><strong>Order Total</strong></th>
+                        <td></td>
+                        <td style="color: azure;float: left; "><strong ><span class="amount" >{{order_total | currency:"VND" }}</span></strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                    </table>
+                  </div>
+                  <input class="ps-btn ps-btn--fullwidth" type="submit" value="Place order">
+                </div>
+                <div class="ps-shipping">
+                  <h3>FREE SHIPPING</h3>
+                  <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on every order, every time.</p>
+                </div>
+              </div>
+            </form>
+        </div>
+
+      <!-- </form> -->
+    </div>
+  </div>
+</main>

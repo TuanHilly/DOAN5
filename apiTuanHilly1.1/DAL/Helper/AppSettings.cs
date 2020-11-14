@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Helper
+namespace DAL.Helper
 {
     public class AppSettings
     {

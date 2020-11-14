@@ -1,17 +1,3 @@
-E:\web Bags\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\DAL.dll
-E:\web Bags\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\Model.dll
-E:\web Bags\apiTuanHilly1.1\BLL\obj\Debug\netcoreapp3.1\BLL.AssemblyInfoInputs.cache
-E:\web Bags\apiTuanHilly1.1\BLL\obj\Debug\netcoreapp3.1\BLL.AssemblyInfo.cs
-E:\web Bags\apiTuanHilly1.1\BLL\obj\Debug\netcoreapp3.1\BLL.csprojAssemblyReference.cache
-E:\web Bags\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\BLL.deps.json
-E:\web Bags\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\BLL.dll
-E:\web Bags\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\BLL.pdb
-E:\web Bags\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\DAL.pdb
-E:\web Bags\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\Model.pdb
-E:\web Bags\apiTuanHilly1.1\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.CoreCompileInputs.cache
-E:\web Bags\apiTuanHilly1.1\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.CopyComplete
-E:\web Bags\apiTuanHilly1.1\BLL\obj\Debug\netcoreapp3.1\BLL.dll
-E:\web Bags\apiTuanHilly1.1\BLL\obj\Debug\netcoreapp3.1\BLL.pdb
 E:\DOAN5\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\BLL.deps.json
 E:\DOAN5\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\BLL.dll
 E:\DOAN5\apiTuanHilly1.1\BLL\bin\Debug\netcoreapp3.1\BLL.pdb

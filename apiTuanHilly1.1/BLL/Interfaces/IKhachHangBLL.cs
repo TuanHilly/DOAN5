@@ -14,3 +14,4 @@ namespace BLL.Interfaces
         List<KhachHang> Search(int pageIndex, int pageSize, out long total, string tenkh, string email);
     }
 }
+

@@ -1,23 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using BLL;
 using BLL.Interfaces;
 using DAL;
 using DAL.Helper;
 using DAL.Interfaces;
-using Helper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace API
@@ -37,8 +28,8 @@ namespace API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-         public void ConfigureServices(IServiceCollection services)
-        { 
+        public void ConfigureServices(IServiceCollection services)
+        {
             services.AddCors();
             services.AddControllers();
 
@@ -65,40 +56,35 @@ namespace API
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-            }); 
+            });
 
             services.AddControllers();
-            services.AddTransient<IDatabaseHelper, DatabaseHelper>();
-            services.AddTransient<ICustomerDAL, CustomerDAL>();
-            services.AddTransient<ICustomerBLL, CustomerBLL>();
-            services.AddTransient<IProductBLL, ProductBLL>();
-            services.AddTransient<IProductDAL, ProductDAL>();
-
-            services.AddTransient<IBillResponsitory, BillRepository>();
-            services.AddTransient<IBillBusiness, BillBusiness>();
-            services.AddTransient<IUserDAL, UserDAL>();
-            services.AddTransient<IUserBLL, UserBLL>();
+            services.AddTransient<IHDBDAL, HDBDAL>();
+            services.AddTransient<IHDBBLL, HDBBLL>();
             services.AddTransient<IKhachHangBLL, KhachHangBLL>();
             services.AddTransient<IKhachHangDAL, KhachHangDAL>();
-
+            services.AddTransient<ILoaiSPDAL, LoaiSPDAL>();
+            services.AddTransient<IThuongHieuDAL, ThuongHieuDAL>();
+            services.AddTransient<IThuongHieuBLL, ThuongHieuBLL>();
+            services.AddTransient<IUserDAL, UserDAL>();
+            services.AddTransient<IUserBLL, UserBLL>();
+            services.AddTransient<ILoaiSPDAL, LoaiSPDAL>();
+            services.AddTransient<ILoaiSPBLL, LoaiSPBll>();
+            services.AddTransient<ISanPhamDAL, SanPhamDAL>();
+            services.AddTransient<ISanPhamBLL, SanPhamBLL>();
+            services.AddTransient<IDatabaseHelper, DatabaseHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
-
             app.UseRouting();
-
+            // global cors policy
             app.UseCors(x => x
-               .AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader());
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseAuthentication();
             app.UseAuthorization();
 

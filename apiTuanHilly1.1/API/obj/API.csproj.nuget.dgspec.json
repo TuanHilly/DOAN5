@@ -30,6 +30,9 @@
               "E:\\DOAN5\\apiTuanHilly1.1\\BLL\\BLL.csproj": {
                 "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\BLL\\BLL.csproj"
               },
+              "E:\\DOAN5\\apiTuanHilly1.1\\DAL\\DAL.csproj": {
+                "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\DAL\\DAL.csproj"
+              },
               "E:\\DOAN5\\apiTuanHilly1.1\\Model\\Model.csproj": {
                 "projectPath": "E:\\DOAN5\\apiTuanHilly1.1\\Model\\Model.csproj"
               }
@@ -49,9 +52,37 @@
               "target": "Package",
               "version": "[3.1.9, )"
             },
-            "System.Drawing.Common": {
+            "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "System.IO": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [
@@ -117,17 +148,41 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.IdentityModel.Tokens": {
+            "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
-              "version": "[6.8.0, )"
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "System.IO": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.8.0, )"
-            },
-            "System.Security.Claims": {
-              "target": "Package",
-              "version": "[4.3.0, )"
             }
           },
           "imports": [
@@ -141,6 +196,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -187,17 +245,37 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.Extensions.Configuration.Abstractions": {
+            "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
-              "version": "[3.1.9, )"
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.8, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
             },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.2, )"
+            },
+            "System.IO": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [
@@ -211,6 +289,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -252,6 +333,40 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "System.IO": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -263,6 +378,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

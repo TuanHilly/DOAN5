@@ -7,10 +7,10 @@ using Model;
 
 namespace BLL
 {
-    public class KhachHangBLL : IKhachHangBLL
+   public class KhachHangBLL:IKhachHangBLL
     {
         private IKhachHangDAL _res;
-        public KhachHangBLL(IKhachHangDAL ikhachhang2)
+        public KhachHangBLL (IKhachHangDAL ikhachhang2)
         {
             _res = ikhachhang2;
         }
