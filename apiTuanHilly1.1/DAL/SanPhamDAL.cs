@@ -30,8 +30,8 @@ namespace DAL
                 "@mota", model.mota,
                 "@dongia", model.dongia,
                 "@soluong", model.soluong,
-                "@anh", model.anh,
-                "@status", model.status);
+                "@anh", model.anh
+                );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

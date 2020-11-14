@@ -79,7 +79,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
         let data_image = data == '' ? null : data;
         let tmp = {
            anh:data_image,
-           masp:value.masp,
+           masp:Number.parseInt(value.masp),
            tensp:value.tensp,
            maloai:value.maloai,
            mathuonghieu:value.mathuonghieu,
@@ -88,11 +88,13 @@ export class ProductComponent extends BaseComponent implements OnInit {
            soluong:Number.parseInt(value.soluong),
            dongia: +value.dongia,
           };
+
         this._api.post('/api/sanpham/create-product',tmp).takeUntil(this.unsubscribe).subscribe(res => {
           alert('Thêm thành công');
           this.search();
           this.closeModal();
           });
+
       });
     } else {
       this.getEncodeFromImage(this.file_image).subscribe((data: any): void => {
