@@ -5,7 +5,8 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { TypeProductComponent } from './type-product/type-product.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import {PaginatorModule} from 'primeng/paginator';
+import {PaginatorModule} from 'primeng/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
       HomeComponent,
@@ -17,7 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     HomeRoutingModule,
      NgbModule,
-     //PaginatorModule
+     PaginatorModule,
+     NgxPaginationModule,
   ]
 })
 export class HomeModule { }

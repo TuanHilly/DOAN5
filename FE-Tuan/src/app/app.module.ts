@@ -12,7 +12,8 @@ import { DetailsComponent } from './home/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import {PaginatorModule} from 'primeng/paginator';
+import {PaginatorModule} from 'primeng/paginator';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +24,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
   ],
   imports: [ //nhập
-    BrowserModule,
+    BrowserModule,CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
         ReactiveFormsModule,
          NgbModule,
-         //PaginatorModule
+         PaginatorModule
   ],
   providers: [], //nhà cung cấp
   bootstrap: [AppComponent]

@@ -23,7 +23,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
 
     this.sp=[];
     this.index=1;
-    this.size=9;
+    this.size=4;
     this._api.get('api/loaisp/get-category').takeUntil(this.unsubscribe).subscribe(res => {this.loaisp = res;})
     let elem = document.getElementsByClassName("script");
     for(var i = elem.length -1; 0 <= i; i--) {
